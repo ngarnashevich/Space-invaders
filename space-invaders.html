@@ -8,6 +8,29 @@
 	    <script>
 	  var canvas = document.getElementById('myCanvas');
       var context = canvas.getContext('2d');
+      var plane_x = 380;
+
+      //buttons
+
+  		$("body").keydown(function (e){
+  			var key = e.which;
+  			// button left
+  			if (key == 37) {
+  				plane_x = plane_x-10;
+  				if (plane_x == 0) {
+  					plane_x = plane_x+10;
+  				};
+
+  			};
+  			// button right
+  			if (key == 39) {
+  				plane_x = plane_x+10;
+  				if (plane_x == 760) {
+  					plane_x = plane_x-10;
+  				};
+  			};
+		})
+		setInterval(function() {
       context.beginPath();
       context.rect(0, 0, 800, 600);
       context.fillStyle = 'black';
@@ -15,10 +38,11 @@
       context.stroke();
 
       context.beginPath();
-      context.rect(380, 550, 40, 40);
+      context.rect(plane_x, 550, 40, 40);
       context.fillStyle = 'white';
       context.fill();
       context.stroke();
+	},50);
 
 		</script>
   </body>
