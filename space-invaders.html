@@ -8,26 +8,25 @@
 	    <script>
 	  var canvas = document.getElementById('myCanvas');
       var context = canvas.getContext('2d');
-      var plane_x = 380;
+      var plane = {x:380, y:550};
       var bullet_move = false;
-      var bullet_x = 380;
-      var bullet_y = 560;
+      var bullet ={x:380, y:560};
       //buttons
   		$("body").keydown(function (e){
   			var key = e.which;
   			// button left
   			if (key == 37) {
-  				plane_x = plane_x-10;
-  				if (plane_x == 0) {
-  					plane_x = plane_x+10;
+  				plane.x = plane.x-10;
+  				if (plane.x == 0) {
+  					plane.x = plane.x+10;
   				};
 
   			};
   			// button right
   			if (key == 39) {
-  				plane_x = plane_x+10;
-  				if (plane_x == 760) {
-  					plane_x = plane_x-10;
+  				plane.x = plane.x+10;
+  				if (plane.x == 760) {
+  					plane.x = plane.x-10;
   				};
 
   			};
@@ -37,9 +36,9 @@
 		})
 		setInterval(function(){
 			if (bullet_move == true) {
-				bullet_y = bullet_y-10
+				bullet.y = bullet.y-10
 			}else{
-				bullet_x = plane_x;
+				bullet.x = plane.x;
 			}
 
       context.beginPath();
@@ -49,13 +48,13 @@
       context.stroke();
 
       context.beginPath();
-      context.rect(plane_x, 550, 40, 40);
+      context.rect(plane.x, plane.y, 40, 40);
       context.fillStyle = 'white';
       context.fill();
       context.stroke();
 
       context.beginPath();
-      context.arc(bullet_x,bullet_y, 10, 0, 2 * Math.PI, false);
+      context.arc(bullet.x,bullet.y, 10, 0, 2 * Math.PI, false);
       context.fillStyle = 'green';
       context.fill();
       context.stroke();
