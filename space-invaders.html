@@ -10,7 +10,13 @@
       var context = canvas.getContext('2d');
       context.beginPath();
       context.rect(0, 0, 800, 600);
-      context.fillStyle = 'balck';
+      context.fillStyle = 'black';
+      context.fill();
+      context.stroke();
+
+      context.beginPath();
+      context.rect(380, 550, 40, 40);
+      context.fillStyle = 'white';
       context.fill();
       context.stroke();
 
