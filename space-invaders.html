@@ -9,8 +9,7 @@
 	  var canvas = document.getElementById('myCanvas');
       var context = canvas.getContext('2d');
       var plane = {x:380, y:550};
-      var bullet_move = false;
-      var bullet ={x:380, y:560};
+      var bullets = [];
       //buttons
   		$("body").keydown(function (e){
   			var key = e.which;
@@ -31,15 +30,11 @@
 
   			};
   			if (key == 32){
-  				bullet_move = true;
+  				bullets.push({x:plane.x+20, y:560});
   			};
+
 		})
 		setInterval(function(){
-			if (bullet_move == true) {
-				bullet.y = bullet.y-10
-			}else{
-				bullet.x = plane.x;
-			}
 
       context.beginPath();
       context.rect(0, 0, 800, 600);
@@ -53,11 +48,16 @@
       context.fill();
       context.stroke();
 
-      context.beginPath();
-      context.arc(bullet.x,bullet.y, 10, 0, 2 * Math.PI, false);
-      context.fillStyle = 'green';
-      context.fill();
-      context.stroke();
+      for (var i = 0; i < bullets.length; i++) {
+      	var bullet = bullets[i];
+			bullet.y = bullet.y-10
+
+			context.beginPath();
+		    context.arc(bullet.x,bullet.y, 10, 0, 2 * Math.PI, false);
+		    context.fillStyle = 'green';
+		    context.fill();
+		    context.stroke();
+      };
 	},50);
 
 		</script>
