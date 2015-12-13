@@ -49,6 +49,19 @@
     })
     setInterval(function(){
 
+      for (var k = 0; k < bullets.length; k++) {
+        var hit = null;
+        for (var b = 0; b < enemies.length; b++) {
+          if (bullets[k].x == enemies[b].x && bullets[k].y == enemies[b].y) {
+               hit = b;
+          };
+        };
+        if (hit != null) {
+           enemies.splice(hit,1);
+           bullets.splice(k,1);
+        };
+      };
+
       context.beginPath();
       context.rect(0, 0, 800, 600);
       context.fillStyle = 'black';
@@ -66,7 +79,7 @@
       bullet.y = bullet.y-10
 
       context.beginPath();
-        context.arc(bullet.x,bullet.y, 10, 0, 2 * Math.PI, false);
+        context.arc(bullet.x,bullet.y, 5, 0, 2 * Math.PI, false);
         context.fillStyle = 'green';
         context.fill();
         context.stroke();
