@@ -12,8 +12,17 @@
       var bullets = [];
       var enemies = [];
 
-      for (var i = 0; i < 24; i++) {
-        enemies[i] = {x:50+i*30,y:50};
+      var enemy_x = 50;
+      var enemy_y = 50;
+      var enemy_index = 0;
+      for (var z = 0; z < 4; z++) {
+          for (var i = 0; i < 24; i++) {
+            enemies[enemy_index] = {x:enemy_x, y:enemy_y};
+            enemy_index = enemy_index + 1;
+            enemy_x = enemy_x + 30;
+          };
+          enemy_x = 50;
+          enemy_y = enemy_y + 30;
       };
       //buttons
       $("body").keydown(function (e){
@@ -71,7 +80,6 @@
         context.fill();
         context.stroke();
       };
-      
   },50);
 
     </script>
