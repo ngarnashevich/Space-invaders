@@ -11,6 +11,8 @@
       var plane = {x:380, y:550};
       var bullets = [];
       var enemies = [];
+      var enemies_speedx = 10;
+  	  var enemies_speedy = 0;
 
       var enemy_x = 50;
       var enemy_y = 50;
@@ -49,6 +51,7 @@
     })
     setInterval(function(){
 
+
       for (var k = 0; k < bullets.length; k++) {
         var hit = null;
         for (var b = 0; b < enemies.length; b++) {
@@ -76,7 +79,7 @@
 
       for (var i = 0; i < bullets.length; i++) {
         var bullet = bullets[i];
-      bullet.y = bullet.y-10
+      bullet.y = bullet.y-10;
 
       context.beginPath();
         context.arc(bullet.x,bullet.y, 5, 0, 2 * Math.PI, false);
@@ -95,6 +98,28 @@
       };
   },50);
 
+  setInterval(function(){
+	  	for (var i = 0; i < enemies.length; i++) {
+	        var enemy = enemies[i];
+	        if (enemy.x == 790) {
+	        	enemies_speedx = -10;
+	        	enemies_speedy = 10;
+	        	break;
+	        }
+	        if (enemy.x == 10) {
+	        	enemies_speedx = 10;
+	        	enemies_speedy = 10;
+	        	break;
+	        }
+	    }
+
+	  	for (var i = 0; i < enemies.length; i++) {
+		    var enemy = enemies[i];
+		    enemy.x = enemy.x + enemies_speedx;
+		    enemy.y = enemy.y + enemies_speedy;
+	    }
+	    enemies_speedy = 0;
+  },200);
     </script>
   </body>
 </html>
